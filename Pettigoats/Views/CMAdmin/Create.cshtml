@@ -1,0 +1,49 @@
+﻿@model Pettigoats.Models.Gallery
+
+@{
+    ViewBag.Title = "Create New Photo";
+}
+
+<h2>Content Management: Create New Photo</h2>
+
+@using (Html.BeginForm("Create", "CMAdmin", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>Gallery</legend>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Filename)
+        </div>
+        <div class="editor-field">
+            @*<input type="file" name="file" id="file" />*@
+            @Html.TextBox("file", "", new { type = "file" })
+            @*@Html.EditorFor(model => model.Filename)
+                <br />
+                @Html.ValidationMessageFor(model => model.Filename)*@
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.PhotoDescription)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.PhotoDescription)
+            @Html.ValidationMessageFor(model => model.PhotoDescription)
+        </div>
+
+        <p>
+            <input type="submit" value="Upload Photo" />
+        </p>
+    </fieldset>
+}
+
+
+<div>
+    @Html.ActionLink("Back to Content Management screen", "Index")
+</div>
+
+@*@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}*@

@@ -1,0 +1,103 @@
+﻿@model IEnumerable<Pettigoats.Models.Gallery>
+
+@{
+    ViewBag.Title = "Gallery - Under Construction";
+}
+
+<br />
+@*<ul>
+    <li>Coffee</li>
+    <li>Tea</li>
+    <li>Milk</li>
+</ul>*@
+
+<div class="wrapper col4">
+    <div id="container">
+        <div class="gallery">
+            <h2>@ViewBag.Message</h2>
+            
+            @*@{var price=50;}
+            @if (price>30)
+                        {
+                <p>The price is too high.</p>
+                        }*@
+
+                <ul>                
+                    @{int i = 1; }
+                    @{string ThumbNailFile;}
+                    @{string ThumbNailFilePath;}
+                    
+                    @foreach(var item in Model){      
+
+                        if (i < 5)
+                        {
+                           ThumbNailFile = "ThumbSize" + @item.Filename;
+                           ThumbNailFilePath = "/images/demo/gallery/" + ThumbNailFile;                                                     
+                           <li> <a rel="gallery_group" href=@Url.Action(@item.Filename,"images/demo/gallery") title="@item.PhotoDescription"> <img src="@ThumbNailFilePath" alt="Photo Missing" /> </a> </li>
+                           i++;
+                           
+                        }
+                        else
+                        {
+                           ThumbNailFile = @item.Filename.Replace("LARGE", "SMALL");
+                           ThumbNailFilePath = "/images/demo/gallery/" + ThumbNailFile;
+                           <li class="last"> <a rel="gallery_group" href=@Url.Action(@item.Filename,"images/demo/gallery") title="@item.PhotoDescription"> <img src=@ThumbNailFilePath alt="Photo Missing" /> </a> </li>                
+                           i = 1;
+                        }
+
+                        @*<li>*@  // I want to remove this li tag
+                              // and output the li tag info from above
+                        
+                }                             
+                
+                </ul>        
+
+            <ul>
+                @*<li><a rel="gallery_group" href="~/images/demo/gallery/LARGEWalkingOnPorch.jpg" title="This is Image 1 description"><img src="~/images/demo/gallery/SMALLWalkingOnPorch.jpg/" alt="Photo Missing" /></a></li>
+                <li><a rel="gallery_group" href="~/images/demo/gallery/LARGEGoatEating.jpg" title="Image 2 Monkey - sister of Marilyn - Black and White Doeling with Moonspots"><img src="~/images/demo/gallery/SMALLGoatEating.jpg" alt="" /></a></li>*@
+
+                @*<li>
+                    <a runat="server" rel="gallery_group" href="~/images/demo/gallery/500x500.gif"
+                       title="TTTEEESSSTT Image 3" id="htmlAnchPhoto3">
+                        <img src="~/images/demo/gallery/174x174.gif" runat="server" alt="" id="htmlImgSrcPhoto3" />
+                    </a>
+                </li>*@
+                @*<li><a rel="gallery_group" href="~/images/demo/LARGE2014-07-25 00.02.39.jpg" title="Image 3"><img src="~/images/demo/SMALL2014-07-25 00.02.39.jpg" alt="" /></a></li>
+                <li><a rel="gallery_group" href="~/images/demo/gallery/LARGENewBuck.jpg" title="Image 4 Alabama Getaway!"><img src="~/images/demo/gallery/SMALLNewBuck.jpg" alt="" /></a></li>
+                <li class="last"><a rel="gallery_group" href="~/images/demo/gallery/LARGEMamaTwoKids.jpg" title="Image 5"><img src="~/images/demo/gallery/SMALLMamaTwoKids.jpg" alt="" /></a></li>
+
+
+                <li><a rel="gallery_group" href="~/images/demo/gallery/LARGEGoatWearsHat.jpg" title="Image 6"><img src="~/images/demo/gallery/SMALLGoatWearsHat.jpg" alt="" /></a></li>
+                <li><a rel="gallery_group" href="~/images/demo/gallery/LARGEGrassAlwaysGreener.jpg" title="Image 7"><img src="~/images/demo/gallery/SMALLGrassAlwaysGreener.jpg" alt="" /></a></li>
+                <li><a rel="gallery_group" href="~/images/demo/gallery/LARGELookingBack.jpg" title="Image 8"><img src="~/images/demo/gallery/SMALLLookingBack.jpg" alt="" /></a></li>
+                <li><a rel="gallery_group" href="~/images/demo/gallery/LARGEMoonSpots.jpg" title="Image 9"><img src="~/images/demo/gallery/SMALLMoonSpots.jpg" alt="" /></a></li>
+                <li class="last"><a rel="gallery_group" href="~/images/demo/gallery/LARGEMoonspotBack.jpg" title="Image 10"><img src="~/images/demo/gallery/ThumbSizeMoonspotBack.jpg" alt="look" /></a></li>
+
+                <li><a rel="gallery_group" href="~/images/demo/gallery/LARGEOneEye.jpg" title="Image 11"><img src="~/images/demo/gallery/SMALLOneEye.jpg" alt="" /></a></li>
+                <li><a rel="gallery_group" href="~/images/demo/gallery/LARGEBlankPhoto.gif" title="Image 12"><img src="~/images/demo/gallery/SMALLBlankPhoto.gif" alt="" /></a></li>
+                <li><a rel="gallery_group" href="~/images/demo/gallery/LARGEBuckWithHorns.jpg" title="Image 13"><img src="~/images/demo/gallery/SMALLBuckWithHorns.jpg" alt="" /></a></li>
+                <li><a rel="gallery_group" href="~/images/demo/gallery/LARGETwoGoatsOnLog.jpg" title="Image 14"><img src="~/images/demo/gallery/SMALLTwoGoatsOnLog.jpg" alt="" /></a></li>
+                <li class="last"><a rel="gallery_group" href="~/images/demo/gallery/LARGELightDarkFace.jpg" title="Image 15"><img src="~/images/demo/gallery/SMALLLightDarkFace.jpg" alt="" /></a></li>
+
+                <li><a rel="gallery_group" href="~/images/demo/gallery/LARGELeftFacingBrown.jpg" title="Image 16"><img src="~/images/demo/gallery/SMALLLeftFacingBrown.jpg" alt="" /></a></li>
+                <li><a rel="gallery_group" href="~/images/demo/gallery/500x500.gif" title="Image 17"><img src="~/images/demo/gallery/174x174.gif" alt="" /></a></li>
+                <li><a rel="gallery_group" href="~/images/demo/gallery/500x500.gif" title="Image 18"><img src="~/images/demo/gallery/174x174.gif" alt="" /></a></li>
+                <li><a rel="gallery_group" href="~/images/demo/gallery/500x500.gif" title="Image 19"><img src="~/images/demo/gallery/174x174.gif" alt="" /></a></li>
+                <li class="last"><a rel="gallery_group" href="~/images/demo/gallery/500x500.gif" title="Image 20"><img src="~/images/demo/gallery/174x174.gif" alt="" /></a></li>*@
+
+            </ul>
+            <br class="clear" />
+        </div>
+    </div>
+</div>
+
+
+@section extraLinks {
+     @*FancyBox*@ 
+    <script type="text/javascript" src="~/Scripts/jquery-1.4.3.min.js"></script>
+    <script type="text/javascript" src="~/Scripts/fancybox/jquery.mousewheel-3.0.4.pack.js"></script>
+    <script type="text/javascript" src="~/Scripts/fancybox/jquery.fancybox-1.3.2.js"></script>
+    <script type="text/javascript" src="~/Scripts/fancybox/jquery.fancybox-1.3.2.setup.js"></script>
+    <link rel="stylesheet" href="~/Scripts/fancybox/jquery.fancybox-1.3.2.css" type="text/css" />
+     @*End FancyBox*@ 
+}

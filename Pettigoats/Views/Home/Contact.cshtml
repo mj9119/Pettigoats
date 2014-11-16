@@ -1,0 +1,99 @@
+﻿@model Pettigoats.Models.ContactMe
+
+@{
+    ViewBag.Title = "Contact Page Under Construction";
+}
+
+@*<hgroup class="title">
+
+</hgroup>*@
+
+<div class="wrapper col4">
+    <div id="container">
+        <div class="gallery">            
+            <h2 style="color: #660000;">@ViewBag.Message</h2>
+            <br />
+            <h3 style="text-align: center; color: #FFFF00"> @ViewBag.ContactPageMessage</h3>
+            @*<h3>Headline 1 Colour and Size</h3>*@
+
+            @*<ul>
+                <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</li>
+                <li>Mauris posuere tellus ac purus adipiscing dapibus.</li>
+            </ul>*@
+            <p style="text-align: center;">If you have any questions or want to contact me concerning Pettigoat Acres please send me an email below.</p>
+            <br />           
+             @*<ol>
+                <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</li>
+                <li>Etiam vel sapien et est adipiscing commodo.</li>
+            </ol>*@
+
+            <hr style="margin-top: 5px; width: 75%; height: 1px; background-color: #FFFF00; border: 0 none;" />
+
+            <h2>Send an Email</h2>
+            <div id="respond">
+                @*<form action="#" method="post">*@
+                @using (Html.BeginForm())
+                {
+                @Html.AntiForgeryToken()
+                @Html.ValidationSummary(true)
+                    <p>
+                        @Html.EditorFor(model => model.Name)
+                        @Html.LabelFor(model => model.Name, "Name (required)")
+                        <span style="color: #e80c4d;">
+                        @Html.ValidationMessageFor(model => model.Name)
+                        </span>
+                            @*<input type="text" name="name" id="name" value="" size="22" />
+            <label for="name"><small>Name (required)</small></label>*@
+</p>
+                    <p>
+                        @Html.EditorFor(model => model.EmailAddress)
+                        @Html.LabelFor(model => model.EmailAddress, "Mail (required)")
+                        <span style="color: #e80c4d;">
+                        @Html.ValidationMessageFor(model => model.EmailAddress)
+                        </span>
+                            @*<input type="text" name="email" id="email" value="" size="22" />
+            <label for="email"><small>Mail (required)</small></label>*@
+</p>
+                    <p>
+                        @Html.TextAreaFor(model => model.Comments, new { rows = 10 })
+                        @Html.LabelFor(model => model.Comments)
+                        @*@Html.ValidationMessageFor(model => model.Comments)*@
+                        @*<textarea name="comment" id="comment" cols="100%" rows="10"></textarea>
+                    <label for="comment" style="display:none;"><small>Comment (required)</small></label>*@
+
+                    </p>
+                    <p>
+                        <input name="submit" type="submit" id="submit" value="Submit Form" />
+                        &nbsp;
+                        <input name="reset" type="reset" id="reset" tabindex="5" value="Reset Form" />
+                    </p>
+                }
+                @*</form>*@
+            </div>
+
+            @*<div id="comments">
+            <h2>Comments</h2>
+            <ul class="commentlist">
+                <li class="comment_odd">
+                    <div class="author"><img class="avatar" src="images/demo/avatar.gif" width="32" height="32" alt="" /><span class="name"><a href="#">A Name</a></span> <span class="wrote">wrote:</span></div>
+                    <div class="submitdate"><a href="#">August 4, 2009 at 8:35 am</a></div>
+                    <p>This is an example of a comment made on a post. You can either edit the comment, delete the comment or reply to the comment. Use this as a place to respond to the post or to share what you are thinking.</p>
+                </li>
+                <li class="comment_even">
+                    <div class="author"><img class="avatar" src="images/demo/avatar.gif" width="32" height="32" alt="" /><span class="name"><a href="#">A Name</a></span> <span class="wrote">wrote:</span></div>
+                    <div class="submitdate"><a href="#">August 4, 2009 at 8:35 am</a></div>
+                    <p>This is an example of a comment made on a post. You can either edit the comment, delete the comment or reply to the comment. Use this as a place to respond to the post or to share what you are thinking.</p>
+                </li>
+                <li class="comment_odd">
+                    <div class="author"><img class="avatar" src="images/demo/avatar.gif" width="32" height="32" alt="" /><span class="name"><a href="#">A Name</a></span> <span class="wrote">wrote:</span></div>
+                    <div class="submitdate"><a href="#">August 4, 2009 at 8:35 am</a></div>
+                    <p>This is an example of a comment made on a post. You can either edit the comment, delete the comment or reply to the comment. Use this as a place to respond to the post or to share what you are thinking.</p>
+                </li>
+            </ul>
+        </div>*@
+
+
+
+</div>
+    </div>
+</div>

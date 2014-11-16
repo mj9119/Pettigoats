@@ -1,0 +1,85 @@
+﻿
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title> @ViewBag.Title </title>
+    <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+    <meta http-equiv="imagetoolbar" content="no" />
+    <link href="~/Content/layout.css" rel="stylesheet" type="text/css" />
+    @RenderSection("extraLinks",required:false)
+</head>
+    @*<asp:contentplaceholder id="ExtraStylesAndScripts" runat="server" />  
+    
+
+    <asp:ContentPlaceHolder id="head" runat="server">
+    </asp:ContentPlaceHolder>*@
+<body id="top">
+
+  <div class="wrapper col1">
+  <div id="header">
+    <div id="topnav">
+      <ul>
+         <li class="last">@Html.ActionLink("Gallery", "Gallery", "Home")</li>
+         @*<li>@Html.ActionLink("About", "About")</li>*@          
+         <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+         <li>@Html.ActionLink("Bucks", "Bucks", "Home")</li>
+         <li>@Html.ActionLink("Does", "Does", "Home")</li>
+          @*<li>
+              <a href="Contact.aspx">Bucks & Does</a><span>Including Lineage </span>
+          </li>*@
+
+          @*<li>@Html.ActionLink("Bucks and Does", "About")</li>*@
+              @*<ul>*@
+                @*<li>@Html.ActionLink("Bucks", "About")</li>*@
+                @*<li>@Html.ActionLink("Does", "About")</li>*@
+              @*</ul>*@
+          </li>
+            @*<li><a href="Contact.aspx#middle">Does</a></li>*@
+
+           @*<li><a href="#">An Additional Link</a></li>*@
+          </ul>
+        </li>
+        @*<li><a href="Lineage.aspx">Lineage</a><span>or Buck & Doe Info</span></li>*@
+
+        <li>@Html.ActionLink("Home", "Index", "Home")</li>
+      </ul>
+
+    </div>
+    <div class="fl_left">
+        <h1>@Html.ActionLink("Pettigoat Acres", "Index", "Home")</h1>
+      @*<h1><a href="Index.cshtml">Pettigoat Acres</a></h1>*@
+        <p class="pettigoat">
+            Nigerian Dwarf Goats <br />
+            Mary Roth / Owner<br />
+            Saint Louis, MO area<br />
+            maryroth1101@yahoo.com
+        </p>
+    </div>
+    <br class="clear" />
+  </div>
+  </div>
+<!-- ############################################################################### -->
+    <section id="main">
+        @RenderBody()
+    </section>
+
+    @*<div>
+        <asp:ContentPlaceHolder id="ContentPlaceHolder1" runat="server">
+        
+        </asp:ContentPlaceHolder>
+    </div>*@
+
+<!-- ############################################################################### -->
+<div class="wrapper col5">
+  <div id="footer">
+    <p class="fl_left"></p>
+        <p class="fl_left">ASP.Net MVC4 Site by <a href="https://www.joeboman.com">Joe Boman.</a> &nbsp; Includes Content Management.</p>
+    <p class="fl_right">Copyright © 2011 - All Rights Reserved by <a href="http://www.os-templates.com/" title="Free Website Templates">OS Templates</a></p>
+    <br class="clear" />
+  </div>
+</div>
+
+   
+</body>
+</html>

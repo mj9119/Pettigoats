@@ -1,0 +1,50 @@
+﻿@{ViewBag.Title = "Home Page Pettigoat Acres";}
+ 
+<div class="wrapper col2">
+  <div id="featured_slide_">
+    <ul id="featured_slide_Content">      
+      <li class="featured_slide_Image"><a href="@Url.Action("Gallery")"><img src="/images/demo/homepage/GoatEve.jpg" alt="ALT TEXT" /></a>
+        @*<li class="featured_slide_Image"><a href="@Url.Action("Gallery")"><img src="@ViewBag.Slide1Image" alt="ALT TEXT" /></a>*@
+            <div class="introtext">
+                <h2>@ViewBag.Slide1Title</h2>
+                <p>@ViewBag.Slide1Text</p>
+            </div>
+        </li>
+      <li class="featured_slide_Image"><a href="@Url.Action("Gallery")"><img src="/images/demo/homepage/GoatInGrass.jpg" alt="" /></a>
+        <div class="introtext">
+          <h2>Category 2 Title</h2>
+          <p>additional descriptive info can be included here.</p>
+        </div>
+      </li>
+      <li class="featured_slide_Image"><a href="@Url.Action("Gallery")"><img src="/images/demo/homepage/WideGoatEating.jpg" alt="" /></a>
+        <div class="introtext">
+          <h2>Category 3 Title</h2>
+          <p>additional descriptive info can be included here. 3&hellip;</p>
+        </div>
+      </li>
+      <li class="featured_slide_Image"><a href="@Url.Action("Gallery")"><img src="/images/demo/homepage/TwoLittleOnes.jpg" alt="" /></a>
+        <div class="introtext">
+          <h2>Category 4 Title</h2>
+          <p>additional descriptive info can be included here.&hellip;</p>
+        </div>
+      </li>
+      <li class="featured_slide_Image"><a href="@Url.Action("Gallery")"><img src="/images/demo/homepage/LittleGoatSmelling.jpg" alt="" /></a>
+        <div class="introtext">
+          <h2>Category 5 Title</h2>
+          <p>additional descriptive info can be included here.&hellip;</p>
+        </div>
+      </li>
+      <li class="clear featured_slide_Image">
+        <!-- Leave This Empty -->
+      </li>
+    </ul>
+  </div>
+</div>
+
+@section extraLinks {
+
+    <script type="text/javascript" src="~/Scripts/jquery-1.4.3.min.js"></script>
+    <script type="text/javascript" src="~/Scripts/jquery.s3slider.js"></script>
+    <script type="text/javascript" src="~/Scripts/jquery.s3slider.setup.js"></script>
+}
+

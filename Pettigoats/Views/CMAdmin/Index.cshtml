@@ -1,0 +1,65 @@
+﻿@model IEnumerable<Pettigoats.Models.Gallery>
+
+@{
+    ViewBag.Title = "CMAdmin Index";
+}
+
+<h2>Pettigoats.com site Administration</h2>
+
+@if (TempData["SomeData"] != null)
+{
+    var joemodel = TempData["SomeData"];
+    <h2 class="pettigoat_blue"> @joemodel  </h2>
+}
+else
+{
+    var joemodel = ViewBag.Message;
+    <h2 class="pettigoat_blue"> @joemodel  </h2>
+}
+@*<h2 class="pettigoat_blue">@ViewBag.Message</h2>*@
+
+<br />
+@Html.ActionLink("Add a New Photo", "Create", "CMAdmin")
+<hr />
+<hr />
+
+@{string ThumbNailFilePath;}
+
+@foreach (var item in Model)
+{
+    
+    <h6> FILENAME: @item.Filename </h6>
+    
+
+    @*<div class="editor-label">
+            @Html.LabelFor(model => @item.PhotoDescription)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => @item.PhotoDescription)
+            @Html.ValidationMessageFor(model => @item.PhotoDescription)
+        </div>*@
+    
+    ThumbNailFilePath = "/images/demo/gallery/ThumbSize" + @item.Filename;
+    <img src="@ThumbNailFilePath" alt="Photo Missing" width="200" height="200" />
+    
+    <h6> CAPTION: @item.PhotoDescription </h6>        
+        @Html.ActionLink("Update Caption Above", "Update", "CMAdmin", new { id = @item.PhotoNumberID }, htmlAttributes: null)
+    <br /><br />
+        @Html.ActionLink("Delete Photo including Caption", "Delete", "CMAdmin", new { id = @item.PhotoNumberID }, htmlAttributes: null)
+    <hr />
+         
+    //    <li> <a rel="gallery_group" href=@Url.Action(@item.Filename,"images/demo/gallery") title="@item.PhotoDescription"> <img src="@ThumbNailFilePath" alt="Photo Missing" /> </a> </li>
+    //@ThumbNailFilePath
+    //    <li class="last"> <a rel="gallery_group" href=@Url.Action(@item.Filename,"images/demo/gallery") title="@item.PhotoDescription"> <img src=@ThumbNailFilePath alt="Photo Missing" /> </a> </li>
+        
+    }
+
+
+
+@Html.ActionLink("Add a New Photo", "Create", "CMAdmin")
+<hr />
+<hr />
+@Html.ActionLink("Gallery", "Gallery","Home")
+
+
+

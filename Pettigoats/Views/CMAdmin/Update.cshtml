@@ -1,0 +1,55 @@
+﻿@model Pettigoats.Models.Gallery
+
+@{
+    ViewBag.Title = "Update";
+}
+
+<h2>Content Management: Update Photo Caption</h2>
+<h2 class="pettigoat_blue">@ViewBag.Message</h2>
+
+@using (Html.BeginForm("Update", "CMAdmin"))
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+    
+    
+    
+    <fieldset>
+        <legend>Gallery</legend>
+        @{string myFilename = @Model.Filename;}
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Filename)
+            @Html.Hidden("Filename", @Model.Filename)
+        </div>
+        <div class="editor-field">
+            @*@Html.EditorFor(model => model.Filename)*@
+            @Html.DisplayFor(model => model.Filename)
+                <br />
+                @Html.ValidationMessageFor(model => model.Filename)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.PhotoDescription)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.PhotoDescription)
+            @Html.ValidationMessageFor(model => model.PhotoDescription)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.PhotoNumberID)
+            @Html.Hidden("PhotoNumberID", @Model.PhotoNumberID)
+        </div>
+        <div class="editor-field">
+            @Html.DisplayFor(model => model.PhotoNumberID)
+            @Html.ValidationMessageFor(model => model.PhotoNumberID)
+        </div>
+
+        @*@{int testInt = 123;}
+        @Html.ActionLink("Update Caption", "Update", "CMAdmin", new { id = testInt }, htmlAttributes: null)*@
+        @*@Html.ActionLink("Update This Caption", "Update", "CMAdmin")*@
+        <p>
+            <input type="submit" value="Update Caption" />
+        </p>
+    </fieldset>
+}
