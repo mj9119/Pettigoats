@@ -197,8 +197,8 @@ namespace Pettigoats.Controllers
         }
 
 
-        static System.Drawing.Image ScaleByPercent(System.Drawing.Image imgPhoto, int Percent)
-        //private System.Drawing.Image ScaleByPercent(System.Drawing.Image imgPhoto, int Percent)
+        // static System.Drawing.Image ScaleByPercent(System.Drawing.Image imgPhoto, int Percent)
+        private System.Drawing.Image ScaleByPercent(System.Drawing.Image imgPhoto, int Percent)
         {
             float nPercent = ((float)Percent / 100);
 
