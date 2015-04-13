@@ -190,15 +190,15 @@ namespace Pettigoats.Controllers
                 }
             else
             {
-                ViewBag.Message = "You have not specified a file.";
+                //ViewBag.Message = "You have not specified a file.";
+                TempData["SomeData"] = "A file was not chosen for upload.";
+                return RedirectToAction("Create");
             }
             TempData["SomeData"] = "Photo was successfully Added";
             return RedirectToAction("Index");
         }
 
-
-        // static System.Drawing.Image ScaleByPercent(System.Drawing.Image imgPhoto, int Percent)
-        private System.Drawing.Image ScaleByPercent(System.Drawing.Image imgPhoto, int Percent)
+        static System.Drawing.Image ScaleByPercent(System.Drawing.Image imgPhoto, int Percent)
         {
             float nPercent = ((float)Percent / 100);
 
@@ -212,7 +212,22 @@ namespace Pettigoats.Controllers
             int destWidth = (int)(sourceWidth * nPercent);
             int destHeight = (int)(sourceHeight * nPercent);
 
-            Bitmap bmPhoto = new Bitmap(destWidth, destHeight,
+            //retain aspect ratio of thumbnail
+            int bitMapWidth = 0, bitMapHeight = 0;
+            if (destHeight > destWidth)
+            {
+                bitMapWidth = bitMapHeight = destHeight;
+                destX = (bitMapWidth - destWidth) / 2;
+                //destX = destHeight / 4;
+            }
+            else
+            {
+                bitMapHeight = bitMapWidth = destWidth;
+                destY = (bitMapHeight - destHeight) / 2;
+                //destY = destWidth / 4;
+            }
+
+            Bitmap bmPhoto = new Bitmap(bitMapWidth, bitMapHeight,
                                      System.Drawing.Imaging.PixelFormat.Format24bppRgb);
             bmPhoto.SetResolution(imgPhoto.HorizontalResolution,
                                     imgPhoto.VerticalResolution);
@@ -220,6 +235,8 @@ namespace Pettigoats.Controllers
             Graphics grPhoto = Graphics.FromImage(bmPhoto);
             grPhoto.InterpolationMode =
                 System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
+
+            grPhoto.Clear(Color.FromArgb(225, 222, 218)); //clears entire drawing surface and colors it with padding
 
             grPhoto.DrawImage(imgPhoto,
                 new Rectangle(destX, destY, destWidth, destHeight),
@@ -229,6 +246,41 @@ namespace Pettigoats.Controllers
             grPhoto.Dispose();
             return bmPhoto;
         }
+
+
+
+        // static System.Drawing.Image ScaleByPercent(System.Drawing.Image imgPhoto, int Percent)
+        //private System.Drawing.Image ScaleByPercent(System.Drawing.Image imgPhoto, int Percent)
+        //{
+        //    float nPercent = ((float)Percent / 100);
+
+        //    int sourceWidth = imgPhoto.Width;
+        //    int sourceHeight = imgPhoto.Height;
+        //    int sourceX = 0;
+        //    int sourceY = 0;
+
+        //    int destX = 0;
+        //    int destY = 0;
+        //    int destWidth = (int)(sourceWidth * nPercent);
+        //    int destHeight = (int)(sourceHeight * nPercent);
+
+        //    Bitmap bmPhoto = new Bitmap(destWidth, destHeight,
+        //                             System.Drawing.Imaging.PixelFormat.Format24bppRgb);
+        //    bmPhoto.SetResolution(imgPhoto.HorizontalResolution,
+        //                            imgPhoto.VerticalResolution);
+
+        //    Graphics grPhoto = Graphics.FromImage(bmPhoto);
+        //    grPhoto.InterpolationMode =
+        //        System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
+
+        //    grPhoto.DrawImage(imgPhoto,
+        //        new Rectangle(destX, destY, destWidth, destHeight),
+        //        new Rectangle(sourceX, sourceY, sourceWidth, sourceHeight),
+        //        GraphicsUnit.Pixel);
+
+        //    grPhoto.Dispose();
+        //    return bmPhoto;
+        //}
 
     }
 }

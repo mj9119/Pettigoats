@@ -185,13 +185,13 @@ namespace Pettigoats.Controllers
         
         public ActionResult Bucks()
         {
-            ViewBag.Message = "Bucks Page Under Construction";
+            ViewBag.Message = "Bucks Page";
 
             return View();
         }
         public ActionResult Does()
         {
-            ViewBag.Message = "Does Page Under Construction";
+            ViewBag.Message = "Does Page";
 
             return View();
         }
